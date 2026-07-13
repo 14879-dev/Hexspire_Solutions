@@ -1,0 +1,19 @@
+# Uploaded files (large binary files, user uploads)
+uploads/projects/*
+uploads/team/*
+uploads/logo/*
+!uploads/projects/.gitkeep
+!uploads/team/.gitkeep
+!uploads/logo/default.svg
+
+# Temp/reset scripts
+reset.php
+db_update.php
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
