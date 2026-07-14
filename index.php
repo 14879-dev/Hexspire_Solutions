@@ -16,7 +16,7 @@
   <meta property="og:description" content="Cutting-edge web development and SEO from Peshawar, Pakistan.">
   <meta property="og:type" content="website">
   <link rel="canonical" href="https://hexspiresolutions.com/">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">
   <link rel="icon" type="image/svg+xml" href="uploads/logo/default.svg">
 </head>
 <body>
@@ -31,7 +31,7 @@
 
 <!-- ── Logo Badge (Top Center) ── -->
 <div id="logo-badge" aria-label="Hexspire Solutions">
-  <span class="logo-placeholder">H</span>
+  <span class="logo-placeholder">Hexspire</span>
 </div>
 
 <!-- ── macOS Dock Navigation ── -->
@@ -43,6 +43,12 @@
      SECTION 1: HERO
      ================================================================ -->
 <section id="hero" aria-label="Hero">
+  <!-- Background image layer -->
+  <div class="hero-bg" aria-hidden="true">
+    <img src="assets/images/hero.png?v=2" alt="" class="hero-bg-image">
+    <div class="hero-bg-overlay"></div>
+  </div>
+
   <div class="container">
     <div class="hero-grid">
       <div class="hero-content">
@@ -51,8 +57,8 @@
           Web Dev &amp; SEO · Peshawar, Pakistan
         </div>
         <h1 class="hero-title fade-up fade-up-delay-1">
-          We Build Digital<br>
-          Experiences That <span class="accent">Convert</span>
+          Transforming Ideas<br>
+          Into Digital <span class="accent">Solutions</span>
         </h1>
         <p class="hero-sub fade-up fade-up-delay-2">
           Hexspire Solutions crafts high-performance websites and data-driven SEO strategies that put your business on the digital map — and keep it there.
@@ -68,9 +74,7 @@
           </a>
         </div>
       </div>
-      <div class="hero-image-wrap fade-up fade-up-delay-4">
-        <img src="assets/images/hero.png?v=2" alt="Developer Setup" class="hero-image">
-      </div>
+      <!-- hero-image-wrap removed — image now lives in .hero-bg above -->
     </div>
   </div>
 
@@ -83,6 +87,7 @@
 
 <div class="section-divider"></div>
 
+ 
 <!-- ================================================================
      SECTION 2: ABOUT
      ================================================================ -->
@@ -94,7 +99,7 @@
       <div class="about-content">
         <span class="section-label fade-up">About Us</span>
         <h2 class="section-title fade-up fade-up-delay-1">
-          Born in Peshawar,<br>Built for the&nbsp;<span style="background:linear-gradient(135deg,var(--orange-400),var(--orange-500));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Web</span>
+         Local Roots,<br>Global Vision<span style="background:linear-gradient(135deg,var(--orange-400),var(--orange-500));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Vision</span>
         </h2>
         <p class="section-sub fade-up fade-up-delay-2">
           Hexspire Solutions was founded with a clear mission: to give businesses of all sizes access to world-class web development and SEO expertise — delivered by a passionate team right here in Peshawar.
@@ -140,7 +145,7 @@
         <div class="stats-badge">
           <div class="stats-badge-ring">
             <div class="stats-badge-inner">
-              <span class="stats-badge-number">3+</span>
+              <span class="stats-badge-number">2+</span>
               <span class="stats-badge-label">Years of<br>Excellence</span>
             </div>
           </div>
@@ -149,11 +154,11 @@
         <!-- Stat counters -->
         <div class="stats-counters">
           <div class="stat-counter">
-            <div class="stat-counter-value" data-count="50" data-suffix="+">0+</div>
+            <div class="stat-counter-value" data-count="10" data-suffix="+">0+</div>
             <div class="stat-counter-label">Projects Delivered</div>
           </div>
           <div class="stat-counter">
-            <div class="stat-counter-value" data-count="30" data-suffix="+">0+</div>
+            <div class="stat-counter-value" data-count="5" data-suffix="+">0+</div>
             <div class="stat-counter-label">Happy Clients</div>
           </div>
           <div class="stat-counter">
@@ -161,7 +166,7 @@
             <div class="stat-counter-label">Team Members</div>
           </div>
           <div class="stat-counter">
-            <div class="stat-counter-value" data-count="100" data-suffix="%">0%</div>
+            <div class="stat-counter-value" data-count="95" data-suffix="+">0%</div>
             <div class="stat-counter-label">Satisfaction Rate</div>
           </div>
         </div>
