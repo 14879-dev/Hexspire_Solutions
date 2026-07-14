@@ -321,6 +321,7 @@
       <!-- Contact Form -->
       <div class="contact-form-wrap fade-up fade-up-delay-3">
         <form id="contact-form" novalidate>
+          <div id="form-message" class="form-message" role="alert" style="margin-top:0;margin-bottom:20px;"></div>
           <div class="form-row">
             <div class="form-group">
               <label for="cf-name">Your Name</label>
@@ -343,7 +344,6 @@
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
             Send Message
           </button>
-          <div id="form-message" class="form-message" role="alert"></div>
         </form>
       </div>
 
@@ -358,6 +358,6 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script src="assets/js/main.js?v=<?= time() ?>"></script>
 </body>
 </html>

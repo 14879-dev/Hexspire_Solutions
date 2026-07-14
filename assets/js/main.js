@@ -333,6 +333,13 @@ function initContactForm() {
       message: form.querySelector('#cf-message').value.trim(),
     };
 
+    if (!payload.name || !payload.email || !payload.subject || !payload.message) {
+      msgEl.textContent = 'Please fill out all fields before sending.';
+      msgEl.className = 'form-message error';
+      msgEl.style.display = 'block';
+      return;
+    }
+
     btn.disabled = true;
     btn.innerHTML = `<span style="display:inline-block;width:18px;height:18px;border:2px solid #fff3;border-top-color:#fff;border-radius:50%;animation:spin 0.7s linear infinite"></span> Sending…`;
     msgEl.className = 'form-message';
@@ -347,7 +354,7 @@ function initContactForm() {
       const data = await res.json();
 
       if (data.success) {
-        msgEl.textContent = data.message;
+        msgEl.textContent = "Message sent! We will get back to you shortly.";
         msgEl.className = 'form-message success';
         form.reset();
       } else {
