@@ -44,10 +44,10 @@ async function loadLogo() {
   const badge = document.getElementById('logo-badge');
   if (!badge) return;
   try {
-    const res = await fetch('/Hexspire_Solution/api/settings.php?key=logo_path');
+    const res = await fetch('api/settings.php?key=logo_path');
     const data = await res.json();
     if (data.value) {
-      badge.innerHTML = `<img src="/Hexspire_Solution/${data.value}" alt="Hexspire Solutions Logo" loading="lazy">`;
+      badge.innerHTML = `<img src="${data.value}" alt="Hexspire Solutions Logo" loading="lazy">`;
     }
   } catch (e) { /* use placeholder */ }
 }
@@ -148,7 +148,7 @@ async function loadServices() {
   if (!grid) return;
 
   try {
-    const res = await fetch('/Hexspire_Solution/api/services.php');
+    const res = await fetch('api/services.php');
     const services = await res.json();
 
     if (!services.length) {
@@ -190,7 +190,7 @@ async function loadProjects() {
   if (!grid) return;
 
   try {
-    const res = await fetch('/Hexspire_Solution/api/projects.php');
+    const res = await fetch('api/projects.php');
     allProjects = await res.json();
 
     // Build filter categories
@@ -233,7 +233,7 @@ function renderProjects(filter) {
     card.className = `project-card fade-up fade-up-delay-${Math.min(i + 1, 5)}`;
 
     const imgHtml = proj.image_path
-      ? `<img src="/Hexspire_Solution/${escHtml(proj.image_path)}" alt="${escHtml(proj.title)}" loading="lazy">`
+      ? `<img src="${escHtml(proj.image_path)}" alt="${escHtml(proj.title)}" loading="lazy">`
       : `<div class="project-image-placeholder"><div>${ICONS['image']}</div></div>`;
 
     const link = proj.link && proj.link !== '#' ? proj.link : null;
@@ -273,7 +273,7 @@ async function loadTeam() {
   if (!grid) return;
 
   try {
-    const res = await fetch('/Hexspire_Solution/api/team.php');
+    const res = await fetch('api/team.php');
     const team = await res.json();
 
     if (!team.length) {
@@ -288,7 +288,7 @@ async function loadTeam() {
 
       const initials = member.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
       const photoHtml = member.photo_path
-        ? `<img class="team-photo" src="/Hexspire_Solution/${escHtml(member.photo_path)}" alt="${escHtml(member.name)}" loading="lazy">`
+        ? `<img class="team-photo" src="${escHtml(member.photo_path)}" alt="${escHtml(member.name)}" loading="lazy">`
         : `<div class="team-photo-placeholder">${initials}</div>`;
 
       const socials = [];
@@ -339,7 +339,7 @@ function initContactForm() {
     msgEl.style.display = 'none';
 
     try {
-      const res = await fetch('/Hexspire_Solution/api/contact.php', {
+      const res = await fetch('api/contact.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

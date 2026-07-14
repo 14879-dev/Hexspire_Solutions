@@ -33,7 +33,7 @@ adminHead('Dashboard', 'dashboard');
       <div class="stat-card-value"><?= $totalServices ?></div>
       <div class="stat-card-label">Services</div>
     </div>
-    <a href="/Hexspire_Solution/admin/services.php" class="stat-card-link">Manage →</a>
+    <a href="services.php" class="stat-card-link">Manage →</a>
   </div>
 
   <div class="stat-card">
@@ -44,7 +44,7 @@ adminHead('Dashboard', 'dashboard');
       <div class="stat-card-value"><?= $totalProjects ?></div>
       <div class="stat-card-label">Projects</div>
     </div>
-    <a href="/Hexspire_Solution/admin/projects.php" class="stat-card-link">Manage →</a>
+    <a href="projects.php" class="stat-card-link">Manage →</a>
   </div>
 
   <div class="stat-card">
@@ -55,7 +55,7 @@ adminHead('Dashboard', 'dashboard');
       <div class="stat-card-value"><?= $totalTeam ?></div>
       <div class="stat-card-label">Team Members</div>
     </div>
-    <a href="/Hexspire_Solution/admin/team.php" class="stat-card-link">Manage →</a>
+    <a href="team.php" class="stat-card-link">Manage →</a>
   </div>
 
   <div class="stat-card">
@@ -66,7 +66,7 @@ adminHead('Dashboard', 'dashboard');
       <div class="stat-card-value"><?= $totalMessages ?></div>
       <div class="stat-card-label">Messages <?= $unreadMessages > 0 ? "<span class='badge badge-sm'>$unreadMessages new</span>" : '' ?></div>
     </div>
-    <a href="/Hexspire_Solution/admin/messages.php" class="stat-card-link">View →</a>
+    <a href="messages.php" class="stat-card-link">View →</a>
   </div>
 </div>
 
@@ -74,7 +74,7 @@ adminHead('Dashboard', 'dashboard');
 <div class="admin-section">
   <div class="section-head">
     <h3>Recent Messages</h3>
-    <a href="/Hexspire_Solution/admin/messages.php" class="btn-sm">View All</a>
+    <a href="messages.php" class="btn-sm">View All</a>
   </div>
   <?php if (empty($recentMessages)): ?>
     <div class="empty-state">
@@ -95,7 +95,7 @@ adminHead('Dashboard', 'dashboard');
         </thead>
         <tbody>
           <?php foreach ($recentMessages as $msg): ?>
-          <tr class="<?= $msg['is_read'] ? '' : 'row-unread' ?>" onclick="window.location='/Hexspire_Solution/admin/messages.php?view=<?= $msg['id'] ?>'" style="cursor:pointer">
+          <tr class="<?= $msg['is_read'] ? '' : 'row-unread' ?>" onclick="window.location='messages.php?view=<?= $msg['id'] ?>'" style="cursor:pointer">
             <td><?= htmlspecialchars($msg['name']) ?></td>
             <td><?= htmlspecialchars($msg['email']) ?></td>
             <td><?= htmlspecialchars($msg['subject']) ?></td>

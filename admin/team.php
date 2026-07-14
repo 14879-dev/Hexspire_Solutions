@@ -96,7 +96,7 @@ adminHead('Team', 'team');
   <div class="team-admin-card">
     <div class="team-admin-photo">
       <?php if ($m['photo_path']): ?>
-        <img src="/Hexspire_Solution/<?= htmlspecialchars($m['photo_path']) ?>" alt="<?= htmlspecialchars($m['name']) ?>">
+        <img src="../<?= htmlspecialchars($m['photo_path']) ?>" alt="<?= htmlspecialchars($m['name']) ?>">
       <?php else: ?>
         <div class="team-admin-initials"><?= strtoupper(substr($m['name'],0,1)) ?></div>
       <?php endif; ?>

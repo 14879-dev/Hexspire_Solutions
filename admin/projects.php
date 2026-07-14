@@ -110,7 +110,7 @@ adminHead('Projects', 'projects');
         <td><?= $i+1 ?></td>
         <td>
           <?php if ($p['image_path']): ?>
-            <img src="/Hexspire_Solution/<?= htmlspecialchars($p['image_path']) ?>" alt="" style="width:60px;height:40px;object-fit:cover;border-radius:6px">
+            <img src="../<?= htmlspecialchars($p['image_path']) ?>" alt="" style="width:60px;height:40px;object-fit:cover;border-radius:6px">
           <?php else: ?>
             <span style="color:var(--muted)">—</span>
           <?php endif; ?>

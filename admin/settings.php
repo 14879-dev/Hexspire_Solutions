@@ -83,7 +83,7 @@ adminHead('Settings', 'settings');
 
     <div class="logo-preview-wrap">
       <?php if ($logoPath): ?>
-        <img src="/Hexspire_Solution/<?= htmlspecialchars($logoPath) ?>" alt="Current Logo" id="logo-preview" style="max-width:120px;max-height:120px;border-radius:12px;object-fit:contain;background:var(--navy-700);padding:8px">
+        <img src="../<?= htmlspecialchars($logoPath) ?>" alt="Current Logo" id="logo-preview" style="max-width:120px;max-height:120px;border-radius:12px;object-fit:contain;background:var(--navy-700);padding:8px">
       <?php else: ?>
         <div id="logo-preview" class="logo-preview-placeholder">
           <span>H</span>

@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($username === $storedUser && password_verify($password, $storedHash)) {
                 $_SESSION['hs_admin'] = true;
                 $_SESSION['hs_admin_user'] = $username;
-                header('Location: /Hexspire_Solution/admin/dashboard.php');
+                header('Location: dashboard.php');
                 exit;
             } else {
                 $error = 'Invalid username or password.';
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login — Hexspire Solutions</title>
   <meta name="robots" content="noindex, nofollow">
-  <link rel="stylesheet" href="/Hexspire_Solution/assets/css/admin.css">
+  <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body class="login-page">
 
@@ -82,6 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 </div>
 
-<script src="/Hexspire_Solution/assets/js/admin.js"></script>
+<script src="../assets/js/admin.js"></script>
 </body>
 </html>

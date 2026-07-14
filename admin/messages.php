@@ -10,7 +10,7 @@ $msg = ''; $msgType = '';
 if (isset($_GET['read'])) {
     $id = (int)$_GET['read'];
     $db->prepare("UPDATE hs_messages SET is_read=1 WHERE id=?")->execute([$id]);
-    header('Location: /Hexspire_Solution/admin/messages.php');
+    header('Location: messages.php');
     exit;
 }
 
@@ -18,7 +18,7 @@ if (isset($_GET['read'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete') {
     $id = (int)($_POST['id'] ?? 0);
     $db->prepare("DELETE FROM hs_messages WHERE id=?")->execute([$id]);
-    header('Location: /Hexspire_Solution/admin/messages.php');
+    header('Location: messages.php');
     exit;
 }
 
@@ -52,7 +52,7 @@ adminHead('Messages', 'messages');
 <?php if ($viewing): ?>
 <!-- Message Detail View -->
 <div class="message-detail-back">
-  <a href="/Hexspire_Solution/admin/messages.php" class="btn-back">← Back to Inbox</a>
+  <a href="messages.php" class="btn-back">← Back to Inbox</a>
 </div>
 <div class="message-detail">
   <div class="message-detail-header">
@@ -87,7 +87,7 @@ adminHead('Messages', 'messages');
 <?php else: ?>
 <div class="messages-list">
   <?php foreach ($messages as $m): ?>
-  <div class="message-row <?= $m['is_read'] ? '' : 'message-unread' ?>" onclick="window.location='/Hexspire_Solution/admin/messages.php?view=<?= $m['id'] ?>'" style="cursor:pointer" id="msg-<?= $m['id'] ?>">
+  <div class="message-row <?= $m['is_read'] ? '' : 'message-unread' ?>" onclick="window.location='messages.php?view=<?= $m['id'] ?>'" style="cursor:pointer" id="msg-<?= $m['id'] ?>">
     <div class="message-row-avatar"><?= strtoupper(substr($m['name'],0,1)) ?></div>
     <div class="message-row-body">
       <div class="message-row-top">
@@ -99,7 +99,7 @@ adminHead('Messages', 'messages');
     </div>
     <div class="message-row-actions" onclick="event.stopPropagation()">
       <?php if (!$m['is_read']): ?>
-      <a href="/Hexspire_Solution/admin/messages.php?read=<?= $m['id'] ?>" class="btn-sm" title="Mark as read">✓ Read</a>
+      <a href="messages.php?read=<?= $m['id'] ?>" class="btn-sm" title="Mark as read">✓ Read</a>
       <?php endif; ?>
       <form method="POST" onsubmit="return confirm('Delete?')">
         <input type="hidden" name="action" value="delete">

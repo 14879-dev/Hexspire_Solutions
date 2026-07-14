@@ -278,7 +278,7 @@
             </div>
             <div class="contact-detail-text">
               <strong>Email</strong>
-              <span>hello@hexspiresolutions.com</span>
+              <span>hexspire.offical@gmail.com</span>
             </div>
           </div>
           <div class="contact-detail-item">
@@ -287,7 +287,7 @@
             </div>
             <div class="contact-detail-text">
               <strong>Phone</strong>
-              <span>+92 300 000 0000</span>
+              <span>+92 3131990804</span>
             </div>
           </div>
           <div class="contact-detail-item">

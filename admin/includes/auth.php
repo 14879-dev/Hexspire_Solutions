@@ -4,6 +4,6 @@
  */
 session_start();
 if (empty($_SESSION['hs_admin'])) {
-    header('Location: /Hexspire_Solution/admin/login.php');
+    header('Location: login.php');
     exit;
 }
