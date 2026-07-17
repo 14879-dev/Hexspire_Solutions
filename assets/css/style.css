@@ -2104,3 +2104,9 @@ footer {
     text-align: center;
   }
 }
+
+@media (max-width: 768px) {
+  .index-footer {
+    padding-bottom: 100px; /* Space for macOS dock on mobile */
+  }
+}
