@@ -89,25 +89,6 @@ $logoPath = $db->query("SELECT value FROM hs_settings WHERE `key`='logo_path'")-
 <!-- Footer -->
 <footer>
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-logo">H</div>
-        <p class="footer-tagline">Crafting digital experiences that matter — from Peshawar, Pakistan.</p>
-      </div>
-      <div class="footer-links">
-        <h4>Quick Links</h4>
-        <a href="index.php#services">Services</a>
-        <a href="index.php#projects">Projects</a>
-        <a href="index.php#team">Team</a>
-        <a href="index.php#contact">Contact</a>
-      </div>
-      <div class="footer-links">
-        <h4>Company</h4>
-        <a href="page.php?slug=about-us">About Us</a>
-        <a href="blog.php">Blog</a>
-        <a href="page.php?slug=privacy-policy">Privacy Policy</a>
-      </div>
-    </div>
     <div class="footer-bottom">
       <p>© <?= date('Y') ?> <span class="orange">Hexspire Solutions</span> — All rights reserved.</p>
       <div class="footer-bottom-links">

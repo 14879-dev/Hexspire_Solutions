@@ -368,6 +368,7 @@
 </section>
 
 <footer>
+  <div class="container">
     <div class="footer-bottom">
       <p>© <?= date('Y') ?> <span class="orange">Hexspire Solutions</span> — All rights reserved.</p>
       <div class="footer-bottom-links">
