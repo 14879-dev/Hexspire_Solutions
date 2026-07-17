@@ -59,8 +59,8 @@ const DOCK_ITEMS = [
   { id: 'services', label: 'Services', iconName: 'zap'        },
   { id: 'projects', label: 'Projects', iconName: 'image'      },
   { id: 'team',     label: 'Team',     iconName: 'github'     },
-  { id: 'faqs',     label: 'FAQs',     iconName: 'chevron-down'},
   { id: 'contact',  label: 'Contact',  iconName: 'mail'       },
+  { id: 'blog',     label: 'Blog',     iconName: 'file-text'  },
 ];
 
 function buildDock() {
@@ -85,6 +85,10 @@ function buildDock() {
     nav.appendChild(btn);
 
     btn.addEventListener('click', () => {
+      if (item.id === 'blog') {
+        window.location.href = 'blog.php';
+        return;
+      }
       const target = document.getElementById(item.id);
       if (target) {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
