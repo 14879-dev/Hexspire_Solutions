@@ -87,6 +87,14 @@ $logoPath = $db->query("SELECT value FROM hs_settings WHERE `key`='logo_path'")-
   </div>
 </section>
 
+<!-- Back to Home -->
+<div class="container" style="padding-bottom:60px;text-align:center;">
+  <a href="index.php" class="btn btn-outline" id="back-to-home-blog-btn">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Back to Home
+  </a>
+</div>
+
 <!-- Footer -->
 <footer>
   <div class="container">
