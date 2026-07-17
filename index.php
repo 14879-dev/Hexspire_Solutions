@@ -220,11 +220,14 @@
         A selection of the web experiences, SEO campaigns, and digital solutions we've built for our clients.
       </p>
     </div>
-    <div class="projects-filter fade-up fade-up-delay-3" id="projects-filter">
-      <!-- Built dynamically -->
-    </div>
     <div class="projects-grid" id="projects-grid">
-      <!-- Built dynamically -->
+      <!-- Built dynamically (shows 3 most recent) -->
+    </div>
+    <div class="text-center" style="margin-top:48px;" class="fade-up">
+      <a href="projects.php" class="btn btn-outline" id="view-all-projects-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        View All Projects
+      </a>
     </div>
   </div>
 </section>

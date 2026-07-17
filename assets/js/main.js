@@ -197,11 +197,27 @@ async function loadServices() {
   }
 }
 
-// ── Projects ──────────────────────────────────────────────────────────────
+// ── Projects (Homepage — 3 most recent) ──────────────────────────────────
 let allProjects = [];
 let activeFilter = 'All';
 
 async function loadProjects() {
+  const grid = document.getElementById('projects-grid');
+  if (!grid) return;
+
+  try {
+    const res = await fetch('api/projects.php');
+    allProjects = await res.json();
+    // Show only the 3 most recent on the homepage
+    const recent = allProjects.slice(0, 3);
+    renderProjectCards(grid, recent);
+  } catch (e) {
+    grid.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1;text-align:center;">Could not load projects.</p>';
+  }
+}
+
+// ── Projects (Full Page — with category filters) ─────────────────────
+async function loadAllProjects() {
   const grid = document.getElementById('projects-grid');
   const filterWrap = document.getElementById('projects-filter');
   if (!grid) return;
@@ -222,30 +238,28 @@ async function loadProjects() {
           filterWrap.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
           activeFilter = cat;
-          renderProjects(cat);
+          const filtered = cat === 'All' ? allProjects : allProjects.filter(p => p.category === cat);
+          renderProjectCards(grid, filtered);
         });
         filterWrap.appendChild(btn);
       });
     }
 
-    renderProjects('All');
+    renderProjectCards(grid, allProjects);
   } catch (e) {
     grid.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1;text-align:center;">Could not load projects.</p>';
   }
 }
 
-function renderProjects(filter) {
-  const grid = document.getElementById('projects-grid');
-  const filtered = filter === 'All' ? allProjects : allProjects.filter(p => p.category === filter);
-
+function renderProjectCards(grid, items) {
   grid.innerHTML = '';
 
-  if (!filtered.length) {
+  if (!items.length) {
     grid.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1;text-align:center;">No projects in this category yet.</p>';
     return;
   }
 
-  filtered.forEach((proj, i) => {
+  items.forEach((proj, i) => {
     const card = document.createElement('div');
     card.className = `project-card fade-up fade-up-delay-${Math.min(i + 1, 5)}`;
 
@@ -500,7 +514,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollspy();
   loadLogo();
   loadServices();
-  loadProjects();
+  // If page has the full filter bar → show all projects with filters
+  // Otherwise (homepage) → show only 3 most recent
+  if (document.getElementById('projects-filter')) {
+    loadAllProjects();
+  } else {
+    loadProjects();
+  }
   loadTeam();
   loadFaqs();
   initContactForm();

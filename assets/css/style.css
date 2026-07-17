@@ -1809,9 +1809,9 @@ footer {
 /* ── BLOG / PAGE HERO ── */
 .inner-hero {
   position: relative;
-  padding: 120px 0 80px;
+  padding: 140px 0 90px;
   overflow: hidden;
-  background: var(--bg-900);
+  background: #0a0f1a;
 }
 
 .inner-hero::before {
@@ -1821,13 +1821,13 @@ footer {
   background-image: url('assets/images/hero.png');
   background-size: cover;
   background-position: center;
-  opacity: 0.12;
+  opacity: 0.45;
 }
 
 .inner-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(13,110,253,0.08) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(13,110,253,0.25) 0%, rgba(0,0,0,0.55) 100%);
 }
 
 .inner-hero .container {
@@ -1837,8 +1837,8 @@ footer {
 
 .inner-hero-label {
   display: inline-block;
-  background: rgba(13,110,253,0.1);
-  color: var(--primary);
+  background: rgba(255,255,255,0.15);
+  color: #fff;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -1846,19 +1846,21 @@ footer {
   padding: 6px 14px;
   border-radius: 100px;
   margin-bottom: 16px;
+  backdrop-filter: blur(8px);
 }
 
 .inner-hero h1 {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 800;
-  color: var(--text-primary);
+  color: #fff;
   line-height: 1.15;
   max-width: 700px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
 }
 
 .inner-hero p {
-  color: var(--text-secondary);
+  color: rgba(255,255,255,0.8);
   font-size: 1.05rem;
   margin-top: 16px;
   max-width: 560px;
