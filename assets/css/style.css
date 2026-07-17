@@ -141,6 +141,33 @@ ul {
 
 .section {
   padding: var(--section-py) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.page-content-wrap,
+.blog-detail-content {
+  padding: 60px 0 100px;
+  position: relative;
+  z-index: 1;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-primary);
+}
+
+.page-content-wrap h2,
+.blog-detail-content h2,
+.page-content-wrap h3,
+.blog-detail-content h3 {
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  color: var(--text-primary);
+}
+
+.page-content-wrap p,
+.blog-detail-content p {
+  margin-bottom: 1.5em;
+  color: var(--text-secondary);
 }
 
 .section-label {
@@ -406,7 +433,7 @@ ul {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
   overflow: hidden;
   background: #ffffff;
 }
