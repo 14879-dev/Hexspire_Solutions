@@ -58,6 +58,7 @@ $logoPath = $db->query("SELECT value FROM hs_settings WHERE `key`='logo_path'")-
 
 <!-- Hero Section -->
 <div class="inner-hero">
+  <img src="assets/images/hero.png" alt="" class="inner-hero-bg-img" aria-hidden="true">
   <div class="inner-hero-overlay"></div>
   <div class="container">
     <a href="blog.php" class="inner-hero-label" style="text-decoration:none">← Back to Blog</a>

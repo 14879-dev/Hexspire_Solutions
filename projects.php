@@ -48,11 +48,12 @@ $logoPath = $db->query("SELECT value FROM hs_settings WHERE `key`='logo_path'")-
 
 <!-- Hero Section -->
 <div class="inner-hero">
+  <img src="assets/images/hero.png" alt="" class="inner-hero-bg-img" aria-hidden="true">
   <div class="inner-hero-overlay"></div>
   <div class="container">
     <span class="inner-hero-label">Our Portfolio</span>
     <h1>All Projects</h1>
-    <p>Web apps, SEO campaigns, management systems, and more — handcrafted for real results.</p>
+    <p>Web apps, SEO campaigns, management systems, and more &mdash; handcrafted for real results.</p>
   </div>
 </div>
 

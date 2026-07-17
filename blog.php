@@ -47,9 +47,10 @@ $logoPath = $db->query("SELECT value FROM hs_settings WHERE `key`='logo_path'")-
 
 <!-- Hero Section -->
 <div class="inner-hero">
+  <img src="assets/images/hero.png" alt="" class="inner-hero-bg-img" aria-hidden="true">
   <div class="inner-hero-overlay"></div>
   <div class="container">
-    <span class="inner-hero-label">Insights & Updates</span>
+    <span class="inner-hero-label">Insights &amp; Updates</span>
     <h1>The Hexspire Blog</h1>
     <p>Web development tips, SEO strategies, and digital marketing insights from our team of experts.</p>
   </div>

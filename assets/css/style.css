@@ -1811,34 +1811,34 @@ footer {
   position: relative;
   padding: 140px 0 90px;
   overflow: hidden;
-  background: #0a0f1a;
+  background: #f4f7fb;
 }
 
-.inner-hero::before {
-  content: '';
+.inner-hero-bg-img {
   position: absolute;
   inset: 0;
-  background-image: url('assets/images/hero.png');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.45;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
 }
 
 .inner-hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(13,110,253,0.25) 0%, rgba(0,0,0,0.55) 100%);
+  background: rgba(255, 255, 255, 0.78);
+  z-index: 1;
 }
-
 .inner-hero .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .inner-hero-label {
   display: inline-block;
-  background: rgba(255,255,255,0.15);
-  color: #fff;
+  background: rgba(13,110,253,0.1);
+  color: var(--primary);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
@@ -1846,21 +1846,19 @@ footer {
   padding: 6px 14px;
   border-radius: 100px;
   margin-bottom: 16px;
-  backdrop-filter: blur(8px);
 }
 
 .inner-hero h1 {
   font-family: 'Outfit', sans-serif;
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 800;
-  color: #fff;
+  color: var(--text-primary);
   line-height: 1.15;
   max-width: 700px;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
 }
 
 .inner-hero p {
-  color: rgba(255,255,255,0.8);
+  color: var(--text-secondary);
   font-size: 1.05rem;
   margin-top: 16px;
   max-width: 560px;
