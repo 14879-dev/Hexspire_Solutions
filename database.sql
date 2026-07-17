@@ -18,6 +18,7 @@ CREATE TABLE IF NOT EXISTS `hs_services` (
     `icon` VARCHAR(100) NOT NULL DEFAULT 'code',
     `title` VARCHAR(200) NOT NULL,
     `description` TEXT,
+    `image_path` VARCHAR(300),
     `sort_order` INT DEFAULT 0,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -55,6 +56,35 @@ CREATE TABLE IF NOT EXISTS `hs_messages` (
     `subject` VARCHAR(300),
     `message` TEXT,
     `is_read` TINYINT(1) DEFAULT 0,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- FAQs table
+CREATE TABLE IF NOT EXISTS `hs_faqs` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `question` VARCHAR(500) NOT NULL,
+    `answer` TEXT NOT NULL,
+    `sort_order` INT DEFAULT 0,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Blog Posts table
+CREATE TABLE IF NOT EXISTS `hs_blog_posts` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `title` VARCHAR(255) NOT NULL,
+    `slug` VARCHAR(255) NOT NULL UNIQUE,
+    `content` TEXT,
+    `image_path` VARCHAR(300),
+    `is_published` TINYINT(1) DEFAULT 1,
+    `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dynamic Pages table
+CREATE TABLE IF NOT EXISTS `hs_pages` (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `title` VARCHAR(255) NOT NULL,
+    `slug` VARCHAR(255) NOT NULL UNIQUE,
+    `content` TEXT,
     `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

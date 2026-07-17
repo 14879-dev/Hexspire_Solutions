@@ -59,6 +59,7 @@ const DOCK_ITEMS = [
   { id: 'services', label: 'Services', iconName: 'zap'        },
   { id: 'projects', label: 'Projects', iconName: 'image'      },
   { id: 'team',     label: 'Team',     iconName: 'github'     },
+  { id: 'faqs',     label: 'FAQs',     iconName: 'chevron-down'},
   { id: 'contact',  label: 'Contact',  iconName: 'mail'       },
 ];
 
@@ -164,13 +165,25 @@ async function loadServices() {
       const iconEl = icon(svc.icon || 'zap');
       iconEl.style.strokeWidth = '1.8';
 
-      card.innerHTML = `
-        <div class="service-icon"></div>
-        <h3>${escHtml(svc.title)}</h3>
-        <p>${escHtml(svc.description)}</p>
-        <span class="service-link">Learn More <span>${ICONS['arrow-right']}</span></span>
-      `;
-      card.querySelector('.service-icon').appendChild(iconEl);
+      if (svc.image_path) {
+        card.innerHTML = `
+          <div class="service-image-wrap">
+            <img src="${escHtml(svc.image_path)}" alt="${escHtml(svc.title)}" loading="lazy">
+          </div>
+          <h3>${escHtml(svc.title)}</h3>
+          <p>${escHtml(svc.description)}</p>
+          <span class="service-link">Learn More <span>${ICONS['arrow-right']}</span></span>
+        `;
+      } else {
+        card.innerHTML = `
+          <div class="service-icon"></div>
+          <h3>${escHtml(svc.title)}</h3>
+          <p>${escHtml(svc.description)}</p>
+          <span class="service-link">Learn More <span>${ICONS['arrow-right']}</span></span>
+        `;
+        card.querySelector('.service-icon').appendChild(iconEl);
+      }
+
       grid.appendChild(card);
     });
 
@@ -316,6 +329,49 @@ async function loadTeam() {
   }
 }
 
+// ── FAQs ──────────────────────────────────────────────────────────────────────────
+const QUESTIONS_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>`;
+
+async function loadFaqs() {
+  const list = document.getElementById('faq-list');
+  if (!list) return;
+  try {
+    const res = await fetch('api/faqs.php?limit=3');
+    const faqs = await res.json();
+    if (!faqs.length) { list.style.display = 'none'; return; }
+    list.innerHTML = '';
+    faqs.forEach((faq, i) => {
+      const item = document.createElement('div');
+      item.className = 'faq-item fade-up';
+      item.innerHTML = `
+        <button class="faq-question" aria-expanded="false" id="faq-btn-${i}">
+          <span>${escHtml(faq.question)}</span>
+          ${QUESTIONS_SVG}
+        </button>
+        <div class="faq-answer" id="faq-ans-${i}">
+          <p>${escHtml(faq.answer)}</p>
+        </div>
+      `;
+      const btn = item.querySelector('.faq-question');
+      const ans = item.querySelector('.faq-answer');
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        // Close all
+        list.querySelectorAll('.faq-question').forEach(b => b.setAttribute('aria-expanded','false'));
+        list.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+        if (!open) {
+          btn.setAttribute('aria-expanded','true');
+          ans.classList.add('open');
+        }
+      });
+      list.appendChild(item);
+    });
+    observeFadeUp(list.querySelectorAll('.faq-item'));
+  } catch(e) {
+    list.innerHTML = '<p style="color:var(--text-muted);text-align:center">FAQs could not be loaded.</p>';
+  }
+}
+
 // ── Contact Form ───────────────────────────────────────────────────────────
 function initContactForm() {
   const form = document.getElementById('contact-form');
@@ -442,6 +498,7 @@ document.addEventListener('DOMContentLoaded', () => {
   loadServices();
   loadProjects();
   loadTeam();
+  loadFaqs();
   initContactForm();
   initFadeUps();
   initCounters();

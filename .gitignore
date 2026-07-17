@@ -2,6 +2,8 @@
 uploads/projects/*
 uploads/team/*
 uploads/logo/*
+uploads/services/*
+uploads/blog/*
 !uploads/projects/.gitkeep
 !uploads/team/.gitkeep
 !uploads/logo/default.svg
@@ -9,6 +11,12 @@ uploads/logo/*
 # Temp/reset scripts
 reset.php
 db_update.php
+migrate.php
+admin/update_db.php
+
+# Database credentials — NEVER commit these
+includes/db.php
+admin/includes/db.php
 
 # OS
 .DS_Store

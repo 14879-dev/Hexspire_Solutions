@@ -252,7 +252,33 @@
 <div class="section-divider"></div>
 
 <!-- ================================================================
-     SECTION 6: CONTACT
+     SECTION 6: FAQs
+     ================================================================ -->
+<section id="faqs" class="section" aria-label="Frequently Asked Questions">
+  <div class="container">
+    <div class="text-center">
+      <span class="section-label fade-up">Got Questions?</span>
+      <h2 class="section-title fade-up fade-up-delay-1">Frequently Asked Questions</h2>
+      <p class="section-sub fade-up fade-up-delay-2">
+        Here are some of the most common questions we get. Didn't find your answer?
+      </p>
+    </div>
+    <div class="faq-list" id="faq-list">
+      <!-- Built dynamically -->
+    </div>
+    <div class="text-center fade-up" style="margin-top:40px">
+      <a href="#contact" class="btn btn-primary" id="faq-contact-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Still have questions? Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ================================================================
+     SECTION 7: CONTACT
      ================================================================ -->
 <section id="contact" class="section" aria-label="Contact Us">
   <div class="container">
@@ -354,7 +380,39 @@
 <!-- ── Footer ── -->
 <footer>
   <div class="container">
-    <p>© <?= date('Y') ?> <span class="orange">Hexspire Solutions</span> — All rights reserved. Crafted with ❤️ in Peshawar, Pakistan.</p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">H</div>
+        <p class="footer-tagline">Crafting digital experiences that matter — from Peshawar, Pakistan.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="index.php#services">Services</a>
+        <a href="index.php#projects">Projects</a>
+        <a href="index.php#team">Team</a>
+        <a href="index.php#contact">Contact</a>
+      </div>
+      <div class="footer-links">
+        <h4>Company</h4>
+        <a href="page.php?slug=about-us">About Us</a>
+        <a href="blog.php">Blog</a>
+        <a href="page.php?slug=privacy-policy">Privacy Policy</a>
+      </div>
+      <div class="footer-links">
+        <h4>Contact</h4>
+        <a href="mailto:hello@hexspiresolutions.com">hello@hexspiresolutions.com</a>
+        <a href="tel:+923001234567">+92 300 1234567</a>
+        <a href="index.php#contact">Send a Message</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© <?= date('Y') ?> <span class="orange">Hexspire Solutions</span> — All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="page.php?slug=privacy-policy">Privacy Policy</a>
+        <a href="page.php?slug=about-us">About Us</a>
+        <a href="blog.php">Blog</a>
+      </div>
+    </div>
   </div>
 </footer>
 
