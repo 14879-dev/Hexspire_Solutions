@@ -176,14 +176,14 @@ async function loadServices() {
           </div>
           <h3>${escHtml(svc.title)}</h3>
           <p>${escHtml(svc.description)}</p>
-          <span class="service-link">Learn More <span>${ICONS['arrow-right']}</span></span>
+          <a href="index.php#contact" class="service-link" style="text-decoration:none;display:inline-flex;">Learn More <span>${ICONS['arrow-right']}</span></a>
         `;
       } else {
         card.innerHTML = `
           <div class="service-icon"></div>
           <h3>${escHtml(svc.title)}</h3>
           <p>${escHtml(svc.description)}</p>
-          <span class="service-link">Learn More <span>${ICONS['arrow-right']}</span></span>
+          <a href="index.php#contact" class="service-link" style="text-decoration:none;display:inline-flex;">Learn More <span>${ICONS['arrow-right']}</span></a>
         `;
         card.querySelector('.service-icon').appendChild(iconEl);
       }
