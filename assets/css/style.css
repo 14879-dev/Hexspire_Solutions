@@ -1959,6 +1959,64 @@ footer {
 .share-copy { background: var(--bg-700); color: var(--text-primary); }
 .share-copy:hover { background: var(--primary); color: #fff; }
 
+.share-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: var(--bg-800);
+  border: 1px solid var(--bg-700);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 160px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+.share-dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.share-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+  width: 100%;
+}
+
+.share-dropdown-item:hover {
+  background: var(--bg-700);
+}
+
+.share-dropdown-item svg {
+  width: 18px;
+  height: 18px;
+}
+
+.share-dropdown-item.share-wa svg { color: #25d366; }
+.share-dropdown-item.share-fb svg { color: #1877f2; }
+.share-dropdown-item.share-tw svg { color: #fff; }
+.share-dropdown-item.share-copy svg { color: var(--text-primary); }
+
 /* ── BLOG GRID ── */
 .blog-grid {
   display: grid;
