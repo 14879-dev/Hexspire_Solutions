@@ -9,9 +9,9 @@
 /* ── CSS Custom Properties ── */
 :root {
   /* Background Palette (Light grays to white) */
-  --bg-950: #ffffff;
+  --bg-950: #f4f9ff;
   /* Main body */
-  --bg-900: #f4f7fb;
+  --bg-900: #ebf3fd;
   /* Alternate sections */
   --bg-850: #ffffff;
   /* Cards */
@@ -1716,8 +1716,8 @@ footer span.primary-text {
 
 /* ── FOOTER GRID ── */
 footer {
-  background: var(--bg-900);
-  border-top: 1px solid var(--bg-700);
+  background: #1e2125;
+  border-top: 1px solid #2c3036;
   padding: 60px 0 0;
   margin-top: auto;
 }
@@ -1727,7 +1727,7 @@ footer {
   grid-template-columns: 1.4fr 1fr 1fr 1fr;
   gap: 40px;
   padding-bottom: 48px;
-  border-bottom: 1px solid var(--bg-700);
+  border-bottom: 1px solid #2c3036;
 }
 
 .footer-brand .footer-logo {
@@ -1742,11 +1742,11 @@ footer {
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .footer-tagline {
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.65);
   font-size: 0.88rem;
   line-height: 1.6;
   max-width: 220px;
@@ -1756,7 +1756,7 @@ footer {
   font-family: 'Outfit', sans-serif;
   font-weight: 700;
   font-size: 0.9rem;
-  color: var(--text-primary);
+  color: #ffffff;
   margin-bottom: 16px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1764,7 +1764,7 @@ footer {
 
 .footer-links a {
   display: block;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.65);
   text-decoration: none;
   font-size: 0.88rem;
   margin-bottom: 10px;
@@ -1786,7 +1786,7 @@ footer {
 
 .footer-bottom p {
   font-size: 0.83rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.65);
   margin: 0;
 }
 
@@ -1797,7 +1797,7 @@ footer {
 
 .footer-bottom-links a {
   font-size: 0.83rem;
-  color: var(--text-muted);
+  color: rgba(255, 255, 255, 0.65);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
