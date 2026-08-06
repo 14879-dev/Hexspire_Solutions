@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/api/track_visitor.php';
 require_once __DIR__ . '/includes/db.php';
 $db = getDB();
 $posts = $db->query("SELECT id, title, slug, image_path, created_at FROM hs_blog_posts WHERE is_published=1 ORDER BY created_at DESC")->fetchAll();

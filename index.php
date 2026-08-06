@@ -2,6 +2,7 @@
 /**
  * Hexspire Solutions — Public Single-Page Marketing Site
  */
+require_once __DIR__ . '/api/track_visitor.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

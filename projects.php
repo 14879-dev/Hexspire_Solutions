@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/api/track_visitor.php';
 require_once __DIR__ . '/includes/db.php';
 $db = getDB();
 $logoPath = $db->query("SELECT value FROM hs_settings WHERE `key`='logo_path'")->fetchColumn() ?: '';
