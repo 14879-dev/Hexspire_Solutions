@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $projects = $db->query("SELECT * FROM hs_projects ORDER BY sort_order ASC, id ASC")->fetchAll();
-$categories = ['Web', 'SEO', 'App', 'Design', 'Other'];
+$categories = ['Web', 'SEO', 'App', 'Design', 'Management Systems', 'Others'];
 
 adminHead('Projects', 'projects');
 ?>

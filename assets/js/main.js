@@ -508,14 +508,93 @@ const spinStyle = document.createElement('style');
 spinStyle.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
 document.head.appendChild(spinStyle);
 
+// ── Site Header: scroll glass effect ────────────────────────────────────────
+function initSiteHeader() {
+  const header = document.getElementById('site-header');
+  if (!header) return;
+  const onScroll = () => {
+    if (window.scrollY > 30) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+// ── Mobile hamburger toggle & off-canvas drawer ──────────────────────────────
+function initHamburger() {
+  const btn = document.getElementById('nav-hamburger');
+  const menu = document.getElementById('nav-mobile-menu');
+  const backdrop = document.getElementById('nav-mobile-backdrop');
+  const closeBtn = document.getElementById('nav-mobile-close');
+  if (!btn || !menu) return;
+
+  const toggle = (force) => {
+    const isCurrentlyOpen = btn.getAttribute('aria-expanded') === 'true';
+    const nextState = typeof force === 'boolean' ? force : !isCurrentlyOpen;
+    btn.setAttribute('aria-expanded', String(nextState));
+    menu.setAttribute('aria-hidden', String(!nextState));
+    btn.classList.toggle('open', nextState);
+    menu.classList.toggle('open', nextState);
+    if (backdrop) {
+      backdrop.classList.toggle('open', nextState);
+      backdrop.setAttribute('aria-hidden', String(!nextState));
+    }
+    if (nextState) {
+      document.body.classList.add('mobile-nav-active');
+    } else {
+      document.body.classList.remove('mobile-nav-active');
+    }
+  };
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggle();
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggle(false);
+    });
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', () => {
+      toggle(false);
+    });
+  }
+
+  // Close when tapping any link inside mobile menu
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      toggle(false);
+    });
+  });
+
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      toggle(false);
+    }
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      toggle(false);
+    }
+  });
+}
+
 // ── Init ───────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-  buildDock();
-  initScrollspy();
-  loadLogo();
+  initSiteHeader();
+  initHamburger();
+  // Smart loaders — each fn bails early if its DOM target doesn't exist
   loadServices();
-  // If page has the full filter bar → show all projects with filters
-  // Otherwise (homepage) → show only 3 most recent
   if (document.getElementById('projects-filter')) {
     loadAllProjects();
   } else {

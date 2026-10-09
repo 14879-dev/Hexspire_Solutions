@@ -7,16 +7,23 @@ uploads/blog/*
 !uploads/projects/.gitkeep
 !uploads/team/.gitkeep
 !uploads/logo/default.svg
+!uploads/logo/logo.png
+!uploads/logo/logo.webp
 
-# Temp/reset scripts
+# Temp/reset scripts & patches
 reset.php
 db_update.php
 migrate.php
 admin/update_db.php
+patch_update_today/
+if0_42407653_hexspire_db.sql/
 
-# Database credentials — NEVER commit these
+# Database credentials & local DBs — NEVER commit credentials or local dev sqlite
 includes/db.php
 admin/includes/db.php
+*.sqlite
+*.sqlite3
+includes/local_dev.sqlite
 
 # OS
 .DS_Store

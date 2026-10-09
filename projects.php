@@ -3,6 +3,7 @@ require_once __DIR__ . '/api/track_visitor.php';
 require_once __DIR__ . '/includes/db.php';
 $db = getDB();
 $logoPath = $db->query("SELECT value FROM hs_settings WHERE `key`='logo_path'")->fetchColumn() ?: '';
+$currentPage = 'projects';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,9 +16,9 @@ $logoPath = $db->query("SELECT value FROM hs_settings WHERE `key`='logo_path'")-
   <link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="has-site-header inner-page">
 
 <!-- Animated Background -->
 <div id="bg-canvas" aria-hidden="true">
@@ -27,34 +28,16 @@ $logoPath = $db->query("SELECT value FROM hs_settings WHERE `key`='logo_path'")-
   <div class="blob blob-4"></div>
 </div>
 
-<!-- Topbar -->
-<header class="topbar" id="topbar">
-  <div class="container topbar-inner">
-    <a href="index.php" class="topbar-brand" id="logo-badge">
-      <?php if ($logoPath): ?>
-        <img src="<?= htmlspecialchars($logoPath) ?>" alt="Hexspire Solutions Logo" loading="lazy">
-      <?php else: ?>
-        <div class="brand-hex">H</div>
-        <span>Hexspire Solutions</span>
-      <?php endif; ?>
-    </a>
-    <nav class="topbar-links">
-      <a href="index.php#services">Services</a>
-      <a href="projects.php" aria-current="page">Projects</a>
-      <a href="blog.php">Blog</a>
-      <a href="index.php#contact" class="btn btn-primary btn-sm">Contact Us</a>
-    </nav>
-  </div>
-</header>
+<?php require_once __DIR__ . '/includes/nav.php'; ?>
 
 <!-- Hero Section -->
 <div class="inner-hero">
-  <img src="assets/images/hero.png" alt="" class="inner-hero-bg-img" aria-hidden="true">
+  <img src="assets/images/hero.webp" alt="" class="inner-hero-bg-img" aria-hidden="true">
   <div class="inner-hero-overlay"></div>
   <div class="container">
     <span class="inner-hero-label">Our Portfolio</span>
     <h1>All Projects</h1>
-    <p>Web apps, SEO campaigns, management systems, and more &mdash; handcrafted for real results.</p>
+    <p>Web applications, SEO campaigns, digital marketing funnels, and Flutter mobile apps &mdash; handcrafted for real results.</p>
   </div>
 </div>
 
@@ -68,28 +51,13 @@ $logoPath = $db->query("SELECT value FROM hs_settings WHERE `key`='logo_path'")-
       <!-- Built dynamically by main.js -->
     </div>
     <div class="text-center" style="margin-top:60px;">
-      <a href="index.php" class="btn btn-outline" id="back-home-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/></svg>
+      <a href="index.php" class="btn btn-pill-primary" id="back-home-btn" style="padding:12px 32px;">
         Back to Home
       </a>
     </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer>
-  <div class="container">
-    <div class="footer-bottom">
-      <p>© <?= date('Y') ?> <span class="orange">Hexspire Solutions</span> — All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="page.php?slug=privacy-policy">Privacy Policy</a>
-        <a href="page.php?slug=about-us">About Us</a>
-        <a href="blog.php">Blog</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="assets/js/main.js?v=<?= time() ?>"></script>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>
 </body>
 </html>

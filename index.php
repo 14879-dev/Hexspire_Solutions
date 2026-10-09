@@ -1,386 +1,300 @@
 <?php
 /**
  * Hexspire Solutions — Public Single-Page Marketing Site
+ * Neo-Futuristic Studio Theme (Reference Design with Royal Blue Accents)
  */
 require_once __DIR__ . '/api/track_visitor.php';
+require_once __DIR__ . '/includes/db.php';
+$db = getDB();
+$logoPath = $db->query("SELECT value FROM hs_settings WHERE `key`='logo_path'")->fetchColumn() ?: '';
+$currentPage = 'home';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hexspire Solutions — Web Development & SEO | Peshawar, Pakistan</title>
-  <meta name="description" content="Hexspire Solutions delivers cutting-edge web development and SEO services from Peshawar, Pakistan. We craft blazing-fast websites and data-driven strategies that grow your business online.">
-  <meta name="keywords" content="web development Peshawar, SEO Pakistan, website design, digital marketing, Hexspire Solutions">
+  <title>Hexspire Solutions — Web Development, SEO, Digital Marketing &amp; Flutter Apps</title>
+  <meta name="description" content="Hexspire Solutions is a full-service agency specializing in custom web development, high-impact SEO, ROI-driven digital marketing, and cross-platform Flutter mobile applications.">
+  <meta name="keywords" content="web development, SEO Pakistan, digital marketing, Flutter apps, mobile development, software agency Peshawar, Hexspire Solutions">
   <meta name="author" content="Hexspire Solutions">
-  <meta property="og:title" content="Hexspire Solutions — Web Development & SEO">
-  <meta property="og:description" content="Cutting-edge web development and SEO from Peshawar, Pakistan.">
+  <meta property="og:title" content="Hexspire Solutions — Web Dev, SEO, Digital Marketing &amp; Flutter Apps">
+  <meta property="og:description" content="Custom web platforms, technical SEO, high-converting digital marketing, and Flutter apps built to scale.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hexspiresolutions.com/">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://hexspiresolutions.com/">
   <link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Structured Data Schema for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Hexspire Solutions",
+    "url": "https://hexspiresolutions.com",
+    "logo": "https://hexspiresolutions.com/assets/images/favicon.png",
+    "description": "Enterprise-grade web engineering, digital applications, and SEO optimization agency based in Peshawar, Pakistan.",
+    "telephone": "+923131990804",
+    "email": "hexspire.offical@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Peshawar",
+      "addressRegion": "Khyber Pakhtunkhwa",
+      "addressCountry": "PK"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/hexspire-solutions/",
+      "https://www.facebook.com/share/1AHQaEmYoK/",
+      "https://www.instagram.com/hexspire.solutions?mdxt=MXByMmhwaDdtdzlhbA=="
+    ]
+  }
+  </script>
 </head>
-<body>
+<body class="has-site-header">
 
-<!-- ── Animated Background ── -->
-<div id="bg-canvas" aria-hidden="true">
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
-  <div class="blob blob-4"></div>
-</div>
-
-<!-- ── Logo Badge (Top Center) ── -->
-<div id="logo-badge" aria-label="Hexspire Solutions">
-  <span class="logo-placeholder">Hexspire</span>
-</div>
-
-<!-- ── macOS Dock Navigation ── -->
-<nav id="dock-nav" role="navigation" aria-label="Main Navigation">
-  <!-- Built dynamically by main.js -->
-</nav>
+<?php require_once __DIR__ . '/includes/nav.php'; ?>
 
 <!-- ================================================================
-     SECTION 1: HERO
+     HERO SECTION: AUTHENTIC BANNER HERO (FULL-WIDTH NATURAL LAYOUT)
      ================================================================ -->
-<section id="hero" aria-label="Hero">
-  <!-- Background image layer -->
-  <div class="hero-bg" aria-hidden="true">
-    <img src="assets/images/hero.png?v=2" alt="" class="hero-bg-image">
+<section class="hero-stage hero-authentic" id="hero" aria-label="Hero Section">
+  <div class="hero-bg-layer" aria-hidden="true">
+    <img src="assets/images/hero.webp" alt="Hexspire Solutions Tech Banner" class="hero-bg-img" loading="eager">
     <div class="hero-bg-overlay"></div>
   </div>
 
-  <div class="container">
-    <div class="hero-grid">
-      <div class="hero-content">
-        <div class="hero-badge fade-up">
-          <span class="dot"></span>
-          Web Dev &amp; SEO · Peshawar, Pakistan
-        </div>
-        <h1 class="hero-title fade-up fade-up-delay-1">
-          Transforming Ideas<br>
-          Into Digital <span class="accent">Solutions</span>
-        </h1>
-        <p class="hero-sub fade-up fade-up-delay-2">
-          Hexspire Solutions crafts high-performance websites and data-driven SEO strategies that put your business on the digital map — and keep it there.
-        </p>
-        <div class="hero-ctas fade-up fade-up-delay-3">
-          <a href="#contact" class="btn btn-primary" id="hero-cta-contact">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Get In Touch
-          </a>
-          <a href="#projects" class="btn btn-outline" id="hero-cta-projects">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            View Projects
-          </a>
-        </div>
-      </div>
-      <!-- hero-image-wrap removed — image now lives in .hero-bg above -->
+  <div class="container hero-inner-content">
+    <div class="hero-eyebrow fade-up">
+      <span class="hero-dot"></span> Web Dev &middot; SEO &middot; Digital Marketing &middot; Flutter Apps
     </div>
-  </div>
 
-  <!-- Scroll indicator -->
-  <div class="hero-scroll-indicator" aria-hidden="true">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="6 9 12 15 18 9"/></svg>
-    <span>Scroll</span>
-  </div>
-</section>
+    <h1 class="hero-title fade-up fade-up-delay-1">
+      Custom Web, High-Ranking SEO,<br><span class="title-sub-accent">Digital Marketing &amp; Flutter Apps</span>
+    </h1>
 
-<div class="section-divider"></div>
+    <p class="hero-desc fade-up fade-up-delay-2">
+      Hexspire Solutions is a full-service digital agency delivering high-performance web applications, ROI-driven digital marketing, top-tier SEO rankings, and cross-platform Flutter mobile apps built to scale.
+    </p>
 
- 
-<!-- ================================================================
-     SECTION 2: ABOUT
-     ================================================================ -->
-<section id="about" class="section" aria-label="About Us">
-  <div class="container">
-    <div class="about-grid">
+    <div class="hero-actions fade-up fade-up-delay-3">
+      <a href="contact.php" class="btn btn-pill-primary" id="hero-btn-start">
+        Get In Touch 
+      </a>
+      <a href="projects.php" class="btn btn-pill-outline" id="hero-btn-projects">
+        View Projects 
+      </a>
+    </div>
 
-      <!-- Left: Content -->
-      <div class="about-content">
-        <span class="section-label fade-up">About Us</span>
-        <h2 class="section-title fade-up fade-up-delay-1">
-         Local Roots,<br>Global Vision<span style="background:linear-gradient(135deg,var(--orange-400),var(--orange-500));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Vision</span>
-        </h2>
-        <p class="section-sub fade-up fade-up-delay-2">
-          Hexspire Solutions was founded with a clear mission: to give businesses of all sizes access to world-class web development and SEO expertise — delivered by a passionate team right here in Peshawar.
-        </p>
-        <p class="section-sub fade-up fade-up-delay-3" style="margin-top:12px;">
-          Our team of six specialists covers every pillar of digital growth: from pixel-perfect frontend design and robust backend development, to technical SEO and performance optimization. We don't just build websites — we build growth engines.
-        </p>
-
-        <div class="about-features fade-up fade-up-delay-4">
-          <div class="about-feature">
-            <div class="about-feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="9 12 11 14 15 10"/><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div class="about-feature-text">
-              <strong>Client-First Approach</strong>
-              <span>We listen before we build — every solution is tailored to your unique goals.</span>
-            </div>
-          </div>
-          <div class="about-feature">
-            <div class="about-feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            </div>
-            <div class="about-feature-text">
-              <strong>Data-Driven Results</strong>
-              <span>Every decision is backed by analytics, testing, and real performance metrics.</span>
-            </div>
-          </div>
-          <div class="about-feature">
-            <div class="about-feature-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div class="about-feature-text">
-              <strong>On-Time Delivery</strong>
-              <span>We respect your schedule and maintain transparent communication throughout.</span>
-            </div>
-          </div>
-        </div>
+    <!-- Royal Blue Floating Stats Dock Capsule -->
+    <div class="hero-stats-dock fade-up fade-up-delay-4" id="hero-stats-dock">
+      <div class="stats-dock-col">
+        <span class="stats-dock-val">99.8%</span>
+        <span class="stats-dock-lbl">Uptime</span>
       </div>
-
-      <!-- Right: Stats -->
-      <div class="about-stats fade-up fade-up-delay-2">
-        <!-- Circular badge -->
-        <div class="stats-badge">
-          <div class="stats-badge-ring">
-            <div class="stats-badge-inner">
-              <span class="stats-badge-number">2+</span>
-              <span class="stats-badge-label">Years of<br>Excellence</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Stat counters -->
-        <div class="stats-counters">
-          <div class="stat-counter">
-            <div class="stat-counter-value" data-count="10" data-suffix="+">0+</div>
-            <div class="stat-counter-label">Projects Delivered</div>
-          </div>
-          <div class="stat-counter">
-            <div class="stat-counter-value" data-count="5" data-suffix="+">0+</div>
-            <div class="stat-counter-label">Happy Clients</div>
-          </div>
-          <div class="stat-counter">
-            <div class="stat-counter-value" data-count="6">0</div>
-            <div class="stat-counter-label">Team Members</div>
-          </div>
-          <div class="stat-counter">
-            <div class="stat-counter-value" data-count="95" data-suffix="+">0%</div>
-            <div class="stat-counter-label">Satisfaction Rate</div>
-          </div>
-        </div>
+      <div class="stats-dock-sep" aria-hidden="true"></div>
+      <div class="stats-dock-col">
+        <span class="stats-dock-val">50+</span>
+        <span class="stats-dock-lbl">Delivered Projects</span>
       </div>
-
+      <div class="stats-dock-sep" aria-hidden="true"></div>
+      <div class="stats-dock-col">
+        <span class="stats-dock-val">24/7</span>
+        <span class="stats-dock-lbl">Engineering</span>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
+<!-- ================================================================
+     TECH STACK TICKER / TRUSTED ECOSYSTEM
+     ================================================================ -->
+<div class="tech-ticker-wrap" aria-label="Technology Stack">
+  <div class="tech-ticker-track">
+    <div class="tech-ticker-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      PHP 8+ Engineering
+    </div>
+    <div class="tech-ticker-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      MySQL &amp; Relational Architecture
+    </div>
+    <div class="tech-ticker-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      Flutter &amp; Dart Mobile
+    </div>
+    <div class="tech-ticker-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+      React &amp; Modern UI/UX
+    </div>
+    <div class="tech-ticker-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Technical SEO &amp; Core Web Vitals
+    </div>
+    <div class="tech-ticker-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Cloudflare &amp; DDoS Security
+    </div>
+    <div class="tech-ticker-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Sub-Second Page Load SLAs
+    </div>
+
+    <!-- Duplicate for infinite marquee loop -->
+    <div class="tech-ticker-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      PHP 8+ Engineering
+    </div>
+    <div class="tech-ticker-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      MySQL &amp; Relational Architecture
+    </div>
+    <div class="tech-ticker-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      Flutter &amp; Dart Mobile
+    </div>
+    <div class="tech-ticker-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+      React &amp; Modern UI/UX
+    </div>
+  </div>
+</div>
 
 <!-- ================================================================
-     SECTION 3: SERVICES
+     SECTION 2: GATEWAY CARDS — EXPLORE THE ECOSYSTEM
      ================================================================ -->
-<section id="services" class="section" aria-label="Our Services">
+<section class="gateway-section" aria-label="Explore Hexspire Ecosystem" style="padding:48px 0;">
   <div class="container">
-    <div class="text-center">
-      <span class="section-label fade-up">What We Do</span>
-      <h2 class="section-title fade-up fade-up-delay-1">Our Core Services</h2>
-      <p class="section-sub fade-up fade-up-delay-2">
-        From concept to launch and beyond — we provide end-to-end digital solutions that drive real business results.
+    <div class="text-center" style="max-width:680px;margin:0 auto 36px;">
+      <span class="hero-eyebrow fade-up" style="color:var(--primary);margin-bottom:12px;">Core Ecosystem</span>
+      <h2 style="font-family:'Space Grotesk','Outfit',sans-serif;font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;color:#0f172a;" class="fade-up fade-up-delay-1">
+        Everything Engineered for Your Success
+      </h2>
+      <p style="color:var(--text-secondary);font-size:1.02rem;line-height:1.7;" class="fade-up fade-up-delay-2">
+        From deep custom software engineering to data-backed organic rankings, explore the pillars of what makes Hexspire Peshawar's premier digital agency.
       </p>
     </div>
-    <div class="services-grid" id="services-grid">
-      <!-- Loading skeletons -->
-      <?php for ($i = 0; $i < 6; $i++): ?>
-      <div class="service-card" style="pointer-events:none">
-        <div class="service-icon" style="background:rgba(255,255,255,0.04)"></div>
-        <div class="skeleton" style="height:18px;width:60%;margin-bottom:12px"></div>
-        <div class="skeleton" style="height:12px;width:100%;margin-bottom:6px"></div>
-        <div class="skeleton" style="height:12px;width:85%;margin-bottom:6px"></div>
-        <div class="skeleton" style="height:12px;width:70%;margin-bottom:18px"></div>
-        <div class="skeleton" style="height:12px;width:100px"></div>
-      </div>
-      <?php endfor; ?>
+    <div class="gateway-grid">
+
+      <!-- Services Card -->
+      <a href="services.php" class="gateway-card fade-up" id="gateway-services">
+        <div class="gateway-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div class="gateway-card-title">Our Services</div>
+        <p class="gateway-card-desc">Bespoke web apps, technical SEO, WordPress platforms, digital marketing, and mobile applications with 90+ PageSpeed benchmarks.</p>
+        <span class="gateway-card-link">
+          Explore Services 
+        </span>
+      </a>
+
+      <!-- Portfolio Card -->
+      <a href="projects.php" class="gateway-card fade-up fade-up-delay-1" id="gateway-projects">
+        <div class="gateway-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="gateway-card-title">Our Portfolio</div>
+        <p class="gateway-card-desc">Inspect real enterprise web apps, management software, and high-converting e-commerce stores we've engineered for clients.</p>
+        <span class="gateway-card-link">
+          View Portfolio 
+        </span>
+      </a>
+
+      <!-- Team Card -->
+      <a href="about.php" class="gateway-card fade-up fade-up-delay-2" id="gateway-about">
+        <div class="gateway-card-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="gateway-card-title">Meet the Team</div>
+        <p class="gateway-card-desc">Passionate full-stack developers, SEO strategists, and UI/UX designers dedicated to building digital tools that win in the real world.</p>
+        <span class="gateway-card-link">
+          About Us 
+        </span>
+      </a>
+
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
-
 <!-- ================================================================
-     SECTION 4: PROJECTS
+     SECTION 3: ENGINEERING PILLARS / VALUE PROPOSITIONS
      ================================================================ -->
-<section id="projects" class="section" aria-label="Our Projects">
+<section style="background:#ffffff;padding:44px 0;border-top:1px solid rgba(226,232,240,0.8);border-bottom:1px solid rgba(226,232,240,0.8);" aria-label="Why Choose Us">
   <div class="container">
-    <div class="text-center">
-      <span class="section-label fade-up">Our Work</span>
-      <h2 class="section-title fade-up fade-up-delay-1">Featured Projects</h2>
-      <p class="section-sub fade-up fade-up-delay-2">
-        A selection of the web experiences, SEO campaigns, and digital solutions we've built for our clients.
+    <div class="text-center" style="max-width:680px;margin:0 auto 36px;">
+      <span class="hero-eyebrow fade-up" style="color:var(--primary);margin-bottom:12px;">Quality Guarantee</span>
+      <h2 style="font-family:'Space Grotesk','Outfit',sans-serif;font-size:clamp(1.9rem,3.6vw,2.8rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;color:#0f172a;" class="fade-up fade-up-delay-1">
+        Engineered for Extreme Velocity &amp; Uptime
+      </h2>
+      <p style="color:var(--text-secondary);font-size:1.02rem;line-height:1.7;" class="fade-up fade-up-delay-2">
+        We hold every deployment to rigorous standards to ensure your digital platform scales without bottlenecks.
       </p>
     </div>
-    <div class="projects-grid" id="projects-grid">
-      <!-- Built dynamically (shows 3 most recent) -->
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;">
+      
+      <div style="background:#f8fafc;border:1px solid rgba(226,232,240,0.85);border-radius:24px;padding:34px 28px;transition:transform 0.3s ease,box-shadow 0.3s ease;" class="fade-up">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0d6efd,#0052cc);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 20px rgba(13,110,253,0.3);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#0f172a;margin-bottom:10px;">Sub-Second Latency</h3>
+        <p style="color:var(--text-secondary);font-size:0.92rem;line-height:1.65;margin:0;">Optimized backend queries, browser caching, and responsive frontend bundles delivering 90+ Core Web Vitals on mobile and desktop.</p>
+      </div>
+
+      <div style="background:#f8fafc;border:1px solid rgba(226,232,240,0.85);border-radius:24px;padding:34px 28px;transition:transform 0.3s ease,box-shadow 0.3s ease;" class="fade-up fade-up-delay-1">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0d6efd,#0052cc);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 20px rgba(13,110,253,0.3);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#0f172a;margin-bottom:10px;">Defensive Architecture</h3>
+        <p style="color:var(--text-secondary);font-size:0.92rem;line-height:1.65;margin:0;">Built-in parameterized database queries, CSRF token defenses, input sanitization, and Cloudflare WAF protection against DDoS attacks.</p>
+      </div>
+
+      <div style="background:#f8fafc;border:1px solid rgba(226,232,240,0.85);border-radius:24px;padding:34px 28px;transition:transform 0.3s ease,box-shadow 0.3s ease;" class="fade-up fade-up-delay-2">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0d6efd,#0052cc);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 20px rgba(13,110,253,0.3);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#0f172a;margin-bottom:10px;">Rank-Ready Organic SEO</h3>
+        <p style="color:var(--text-secondary);font-size:0.92rem;line-height:1.65;margin:0;">Rich JSON-LD Schema markup, structured semantic HTML5, crawl efficiency tuning, and commercial keyword targeting built right in.</p>
+      </div>
+
+      <div style="background:#f8fafc;border:1px solid rgba(226,232,240,0.85);border-radius:24px;padding:34px 28px;transition:transform 0.3s ease,box-shadow 0.3s ease;" class="fade-up fade-up-delay-3">
+        <div style="width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,#0d6efd,#0052cc);color:#fff;display:flex;align-items:center;justify-content:center;margin-bottom:20px;box-shadow:0 8px 20px rgba(13,110,253,0.3);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" width="22" height="22" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3 style="font-family:'Space Grotesk',sans-serif;font-size:1.25rem;font-weight:700;color:#0f172a;margin-bottom:10px;">Continuous Reliability</h3>
+        <p style="color:var(--text-secondary);font-size:0.92rem;line-height:1.65;margin:0;">24/7 uptime monitoring, automated remote database backups, SSL lifecycle management, and prompt technical support.</p>
+      </div>
+
     </div>
-    <div class="text-center" style="margin-top:48px;" class="fade-up">
-      <a href="projects.php" class="btn btn-outline" id="view-all-projects-btn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        View All Projects
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 4: FINAL CALL TO ACTION
+     ================================================================ -->
+<section class="section home-cta-section" aria-label="Get Started" style="background:#AAC0E1;color:#0E2F76;padding:48px 0;text-align:center;position:relative;overflow:hidden;border-top:1.5px solid rgba(14,47,118,0.15);">
+  <div class="container" style="position:relative;z-index:2;max-width:760px;">
+    <span class="hero-eyebrow fade-up" style="color:#0E2F76;background:rgba(14,47,118,0.12);border-color:rgba(14,47,118,0.25);margin-bottom:14px;">Ready to Scale?</span>
+    <h2 style="font-family:var(--font-display);font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:16px;color:#0E2F76;" class="fade-up fade-up-delay-1">
+      Let's Build Something Extraordinary Together
+    </h2>
+    <p style="color:#173874;font-size:1.05rem;line-height:1.7;margin-bottom:28px;" class="fade-up fade-up-delay-2">
+      Whether you need an enterprise web application, high-converting digital platform, or a dominant organic search ranking, our team in Peshawar is ready to turn your goals into measurable reality.
+    </p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;" class="fade-up fade-up-delay-3">
+      <a href="contact.php" class="btn btn-pill-primary" style="padding:14px 34px;font-size:1rem;background:#0E2F76 !important;color:#F5FEFF !important;border:1.5px solid #0E2F76 !important;">
+        Contact Our Team 
+      </a>
+      <a href="services.php" class="btn btn-pill-outline btn-pill-outline-light-bg" style="padding:14px 28px;font-size:1rem;color:#0E2F76 !important;border:1.5px solid #0E2F76 !important;background:transparent !important;text-decoration:none;">
+        Explore All Services
       </a>
     </div>
   </div>
 </section>
 
-<div class="section-divider"></div>
-
-<!-- ================================================================
-     SECTION 5: TEAM
-     ================================================================ -->
-<section id="team" class="section" aria-label="Our Team">
-  <div class="container">
-    <div class="text-center">
-      <span class="section-label fade-up">The People</span>
-      <h2 class="section-title fade-up fade-up-delay-1">Meet Our Team</h2>
-      <p class="section-sub fade-up fade-up-delay-2">
-        Six specialists, one shared goal — delivering digital solutions that exceed expectations.
-      </p>
-    </div>
-    <div class="team-grid" id="team-grid">
-      <!-- Built dynamically -->
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ================================================================
-     SECTION 6: CONTACT & FAQs
-     ================================================================ -->
-<section id="contact" class="section" aria-label="Contact Us">
-  <div class="container">
-    <div class="text-center">
-      <span class="section-label fade-up">Let's Talk</span>
-      <h2 class="section-title fade-up fade-up-delay-1">Get In Touch</h2>
-      <p class="section-sub fade-up fade-up-delay-2">
-        Have a project in mind or want to learn how we can help? Send us a message and we'll get back to you within 24 hours.
-      </p>
-    </div>
-
-    <div class="contact-grid">
-
-
-      <!-- Contact Info -->
-      <div class="contact-info fade-up fade-up-delay-2">
-        <h3>Let's Start a Conversation</h3>
-        <p>We're always happy to discuss new opportunities, answer questions, or just say hello. Reach out through the form or contact us directly.</p>
-
-        <div class="contact-details">
-          <div class="contact-detail-item">
-            <div class="contact-detail-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            </div>
-            <div class="contact-detail-text">
-              <strong>Email</strong>
-              <span>hexspire.offical@gmail.com</span>
-            </div>
-          </div>
-          <div class="contact-detail-item">
-            <div class="contact-detail-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            </div>
-            <div class="contact-detail-text">
-              <strong>Phone/Whatsapp</strong>
-              <span>+92 3131990804</span>
-            </div>
-          </div>
-          <div class="contact-detail-item">
-            <div class="contact-detail-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            </div>
-            <div class="contact-detail-text">
-              <strong>Location</strong>
-              <span>Peshawar, Khyber Pakhtunkhwa, Pakistan</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Social Links -->
-        <div class="contact-socials" style="margin-top:28px;">
-          <a href="https://www.facebook.com/share/1AHQaEmYoK/" class="contact-social" aria-label="Facebook">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="https://www.instagram.com/hexspire.offical/" class="contact-social" aria-label="Instagram">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/hexspire-solutions-175365407" class="contact-social" aria-label="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Contact Form -->
-      <div class="contact-form-wrap fade-up fade-up-delay-3">
-        <form id="contact-form" novalidate>
-          <div id="form-message" class="form-message" role="alert" style="margin-top:0;margin-bottom:20px;"></div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="cf-name">Your Name</label>
-              <input type="text" id="cf-name" name="name" placeholder="e.g. Ali Hassan" required autocomplete="name">
-            </div>
-            <div class="form-group">
-              <label for="cf-email">Email Address</label>
-              <input type="email" id="cf-email" name="email" placeholder="you@example.com" required autocomplete="email">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="cf-subject">Subject</label>
-            <input type="text" id="cf-subject" name="subject" placeholder="What's this about?" required>
-          </div>
-          <div class="form-group">
-            <label for="cf-message">Message</label>
-            <textarea id="cf-message" name="message" placeholder="Tell us about your project or inquiry…" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary form-submit" id="contact-submit">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-            Send Message
-          </button>
-        </form>
-      </div>
-
-      </div>
-
-      <div style="margin-top: 80px; padding-top: 60px; border-top: 1px solid var(--bg-700)">
-        <div class="text-center">
-          <span class="section-label fade-up">Got Questions?</span>
-          <h2 class="section-title fade-up fade-up-delay-1">Frequently Asked Questions</h2>
-          <p class="section-sub fade-up fade-up-delay-2">
-            Here are some of the most common questions we get. Didn't find your answer? Reach out!
-          </p>
-        </div>
-        <div class="faq-list" id="faq-list">
-          <!-- Built dynamically -->
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</section>
-
-<footer class="index-footer">
-  <div class="container">
-    <div class="footer-bottom">
-      <p>© <?= date('Y') ?> <span class="orange">Hexspire Solutions</span> — All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="page.php?slug=privacy-policy">Privacy Policy</a>
-        <a href="page.php?slug=about-us">About Us</a>
-        <a href="blog.php">Blog</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<script src="assets/js/main.js?v=<?= time() ?>"></script>
+<?php require_once __DIR__ . '/includes/footer.php'; ?>
 </body>
 </html>

@@ -14,7 +14,7 @@ function adminHead(string $title, string $active): void {
   <title><?= htmlspecialchars($title) ?> — Hexspire Admin</title>
   <meta name="robots" content="noindex, nofollow">
   <link rel="stylesheet" href="../assets/css/admin.css">
-  <link rel="icon" type="image/svg+xml" href="../uploads/logo/default.svg">
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
 </head>
 <body>
 
